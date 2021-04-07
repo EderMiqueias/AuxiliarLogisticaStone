@@ -2,6 +2,7 @@ import json
 import falcon
 
 
+# classe base para falcon resources
 class BaseResource(object):
     HELLO = {
         "message": "welcome to my falcon api",
