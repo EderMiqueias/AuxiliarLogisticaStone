@@ -1,2 +1,1 @@
-from .db import get_atendimentos
-from .db import get_estoque_bases
+from .db import get_atendimentos, get_estoque_bases, update_estoque_base
