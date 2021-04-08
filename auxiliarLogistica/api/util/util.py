@@ -1,4 +1,5 @@
-from auxiliarLogistica.db import get_estoque_bases, get_atendimentos
+from auxiliarLogistica.db import get_estoque_bases,\
+    get_atendimentos, update_estoque_base
 
 
 # retorna uma lista com os dicts de cada polo
@@ -21,6 +22,12 @@ def load_bases_json() -> dict:
         b_json = _add_url(b_json)
         bases_json[b_json['url']] = b_json
     return bases_json
+
+
+# recebe um dict com a base atualizada
+def update_base(base) -> None:
+    update_estoque_base(base)
+    return
 
 
 # adiciona a chave url com o valor da base em lower case e sem espaços

@@ -2,7 +2,7 @@ import falcon
 
 from auxiliarLogistica.api.base import BaseResource
 from auxiliarLogistica.api.util import load_bases, load_bases_json,\
-    load_atendimentos_json
+    load_atendimentos_json, update_base
 
 
 # / retorna uma mensagem amigavel de boas vindas à api :)
@@ -32,6 +32,22 @@ class PoloEstoqueResource(BaseResource):
             resp.body = self.to_json(
                 self._insert_average(self.polos_json[polo])
             )
+            resp.status = falcon.HTTP_200
+        else:
+            message = "sorry, didn't find this :("
+            resp = self.on_not_found(resp, message)
+
+    # deve receber um json {'add_estoque': n_terminals}
+    # a aplicação react informa o numero mais apropriado
+    def on_post(self, req, resp, polo):
+        if polo in self.polos_json:
+            context = self.from_json(req.stream.read())['data']
+            add_estoque = context['add_estoque']
+            self.polos_json[polo]['estoque'] += add_estoque
+
+            update_base(self.polos_json[polo])
+
+            resp.body = self.to_json(self.polos_json[polo])
             resp.status = falcon.HTTP_200
         else:
             message = "sorry, didn't find this :("
