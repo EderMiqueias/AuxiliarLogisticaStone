@@ -78,6 +78,18 @@ def insert_data_bases(data) -> None:
     return
 
 
+# !usar o id no where seria aforma correta, porém, como não há
+# polos iguais optei por usar o nome do polo como identificador!
+# Recebe um objeto dict atualizado
+def update_base(data) -> None:
+    cursor.execute(
+        "UPDATE bases SET estoque = ? WHERE base = ?",
+        (data['estoque'], data['base'])
+    )
+
+    _commit()
+
+
 # responsavel por criar as tabelas necessarias
 def create_tables() -> None:
     _create_table_bases()

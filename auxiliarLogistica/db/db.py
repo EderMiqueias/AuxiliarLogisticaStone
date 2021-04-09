@@ -1,4 +1,4 @@
-from .db_sqlite import get, migrate
+from .db_sqlite import get, migrate, update
 
 
 # Retorna uma lista de objetos dict
@@ -15,7 +15,7 @@ def get_estoque_bases() -> list:
     return get("bases")
 
 
-# Recebe uma lista de objetos dict atualizados
+# Recebe um objeto dict atualizado
 def update_estoque_base(updated_base) -> None:
-    # AINDA NAO IMPLEMENTADO!
-    return updated_base
+    update(updated_base)
+    return

@@ -1,6 +1,6 @@
 from .util import db_exist_data, insert_data_atendimentos,\
     insert_data_bases, create_tables, insert_from_csv,\
-    get_atendimentos, get_bases
+    get_atendimentos, get_bases, update_base
 
 
 # retorna uma lista de dicts
@@ -19,6 +19,12 @@ def insert(data, table) -> None:
         insert_data_bases(data)
     elif table == "atendimentos":
         insert_data_atendimentos(data)
+
+
+# Recebe um objeto dict atualizado
+def update(data) -> None:
+    update_base(data)
+    return
 
 
 # responsavel por, caso haja um db e possua dados nele:
