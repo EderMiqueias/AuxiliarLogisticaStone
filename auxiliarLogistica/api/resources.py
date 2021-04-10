@@ -22,7 +22,7 @@ class PolosResource(BaseResource):
         resp.status = falcon.HTTP_200
 
 
-# /polos/{polo} (retorna o estoque deste polo + nome)
+# /polos/{polo} (retorna o estoque deste polo + nome + media-de-consumo-diaria)
 class PoloEstoqueResource(BaseResource):
     polos_json = load_bases_json()
 

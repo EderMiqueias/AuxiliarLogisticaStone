@@ -1,0 +1,36 @@
+.Card {
+    border: 3px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.Card .Content {
+    background-color: #fff;
+    justify-content: center;
+    color: saddlebrown;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.Card .button {
+    background-color: #f4511e;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.Card .button:hover {
+    opacity: 1
+}

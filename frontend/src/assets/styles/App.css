@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App .Polos {
+  padding: 3% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header {
+  text-align: left;
+  padding-top: 3%;
+}
+
+.header .title {
+  color: #f4511e;
+}
+
+.header .blockP {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  border: solid 1px #555;
+  margin: 5px;
+}
+
+.header .legend {
+  display: flex;
+}
+
+.header .legend p{
+  margin: 0;
+}
