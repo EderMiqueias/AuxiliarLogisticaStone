@@ -5,7 +5,11 @@ from auxiliarLogistica.db import get_estoque_bases,\
 # retorna uma lista com os dicts de cada polo
 # adiciona aos dicts um novo campo url
 def load_bases() -> list:
-    return list(map(lambda d: _add_url(d), get_estoque_bases()))
+    atendimentos = load_atendimentos_json()
+    return list(map(
+        lambda d: _insert_url_average(d, atendimentos),
+        get_estoque_bases()
+    ))
 
 
 # retorna um dict tendo os polos como chave e seus respectivos
@@ -18,8 +22,10 @@ def load_atendimentos_json() -> dict:
 # retorna um dict tendo o nome dos polos como chave e um dict como valor
 def load_bases_json() -> dict:
     bases_json = dict()
+    atendimentos = load_atendimentos_json()
+
     for b_json in get_estoque_bases():
-        b_json = _add_url(b_json)
+        b_json = _insert_url_average(b_json, atendimentos)
         bases_json[b_json['url']] = b_json
     return bases_json
 
@@ -31,8 +37,14 @@ def update_base(base) -> None:
 
 
 # adiciona a chave url com o valor da base em lower case e sem espaços
-def _add_url(obj) -> dict:
+# insere a chave 'average' no dict com a media de consumo diario
+def _insert_url_average(obj, atendimentos) -> dict:
+    b = atendimentos[obj["base"]]
+    average = b['terminals'] / len(b["days"])
+
     obj['url'] = obj['base'].replace(" ", "").lower()
+    obj["average"] = average
+
     return obj
 
 
