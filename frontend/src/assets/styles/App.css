@@ -33,3 +33,10 @@
 .header .legend p{
   margin: 0;
 }
+
+.App .Footer {
+  padding: 24px;
+  background-color: #555;
+  color: #fff;
+  margin: 16px 0;
+}

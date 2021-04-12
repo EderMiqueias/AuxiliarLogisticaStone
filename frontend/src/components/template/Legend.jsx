@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => {
+ const Legend = (props) => {
     return (
         <div className="legend">
             <div
@@ -11,3 +11,5 @@ export default (props) => {
         </div>
     )
 }
+
+export default Legend;
