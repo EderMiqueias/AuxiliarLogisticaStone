@@ -52,7 +52,7 @@ const PoloDialog = props => {
                 <DialogContent>
                     <DialogContentText>
                         Para uma cobertura ideal é recomendado o envio
-                        de {props.ideal} na próxima expedição.
+                        de {props.ideal} terminais na próxima expedição.
                     </DialogContentText>
                     <TextField
                         autoFocus
