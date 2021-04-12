@@ -15,10 +15,10 @@ def db_exist_data() -> bool:
 # Retorna uma lista de objetos dict
 def get_bases() -> list:
     cursor.execute("""
-    SELECT base, estoque FROM bases;
+    SELECT id, base, estoque FROM bases;
     """)
 
-    indexes = ['base', 'estoque']
+    indexes = ['id', 'base', 'estoque']
     bases = db_csv.to_json_list(indexes, cursor.fetchall())
 
     return bases
@@ -78,13 +78,11 @@ def insert_data_bases(data) -> None:
     return
 
 
-# !usar o id no where seria aforma correta, porém, como não há
-# polos iguais optei por usar o nome do polo como identificador!
 # Recebe um objeto dict atualizado
 def update_base(data) -> None:
     cursor.execute(
-        "UPDATE bases SET estoque = ? WHERE base = ?",
-        (data['estoque'], data['base'])
+        "UPDATE bases SET estoque = ? WHERE id = ?",
+        (data['estoque'], data['id'])
     )
 
     _commit()

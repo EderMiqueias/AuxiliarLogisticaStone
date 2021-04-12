@@ -28,8 +28,8 @@ def update(data) -> None:
 
 
 # responsavel por, caso haja um db e possua dados nele:
-# - criar as tabelas
-# - inserir os dados nelas, a partir do csv
+# - solicitar a criação das tabelas
+# - solicitar a inserção dos dados nelas, a partir do csv
 def migrate() -> None:
     if db_exist_data():
         return
